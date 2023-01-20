@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_package = "com.resHotel.grpc";
+
+service reservation {
+	rpc afficherChambreDispo(c) returns (resultRes);
+	rpc reserverChambre(CritereReservation) returns (ApiRes);
+	rpc deleteReservation(deleteRef) returns (deleteResultat);
+}
+
+message c{
+	string dateDeb=1;
+	string dateFin=2;
+	int32 nbPersonne=3;	
+	int32 prix=4;
+}
+
+message CritereReservation{
+	int32 numChambre = 1;
+	string nomClient =2;
+	string prenomClient = 3;
+	string dateDeb = 4;
+	string dateFin =5;
+	
+}
+
+message ApiRes{
+	string resMessage =1;
+	int32 reponseCode =2;
+}
+
+
+message resultRes{
+	string chambreDispo = 1;
+	int32 reponseCode =2;
+}
+
+message deleteRef{
+	string refReservation=1;
+}
+
+message deleteResultat{
+	string resMessage=1;
+	int32 reponseCode= 2;
+}
+
+
